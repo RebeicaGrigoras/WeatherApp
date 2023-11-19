@@ -33,7 +33,6 @@ function handleSearchSubmit(event) {
 
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("click", handleSearchSubmit);
-searchCity("Dubai");
 
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
@@ -46,7 +45,6 @@ function getForecast(city) {
   let apiKey = "19efot2d468e33ba0114f3ae9b731180";
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
   axios(apiUrl).then(displayForecast);
-  console.log(apiUrl);
 }
 
 function displayForecast(response) {
@@ -74,8 +72,6 @@ function displayForecast(response) {
   forecastElement.innerHTML = forecastHtml;
 }
 
-getForecast("Dubai");
-
 // API integration
 
 function refreshWeather(response) {
@@ -91,8 +87,10 @@ function refreshWeather(response) {
   windspeedElement.innerHTML = `${Math.round(response.data.wind.speed)} km/h`;
   humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
   descriptionElement.innerHTML = response.data.condition.description;
-  temperatureElement.innerHTML = Math.round(temperature);
-  iconElement.innerHTML = `<img src="${response.data.condition.icon_url}"id="icon"/>`;
+  temperatureElement.innerHTML = `${Math.round(temperature)}°C`;
+  iconElement.setAttribute(`src`, response.data.condition.icon_url);
+
+  getForecast(response.data.city);
 }
 
 function searchCity(city) {
@@ -101,3 +99,21 @@ function searchCity(city) {
   axios.get(apiUrl).then(refreshWeather);
 }
 
+function searchLocation(position) {
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+
+  let apiKey = "19efot2d468e33ba0114f3ae9b731180";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lat=${lat}&lon=${lon}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(refreshWeather);
+}
+
+function getCurrentLocation(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(searchLocation);
+}
+
+let currentLocationButton = document.querySelector("#current-location-button");
+currentLocationButton.addEventListener("click", getCurrentLocation);
+
+searchCity("Dubai");
