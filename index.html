@@ -18,21 +18,21 @@
       <div class="row">
         <div class="col">
           <input type="text" placeholder="Enter a city..." autocomplete="off" autofocus="on" class="search-field"
-            id="search-text-input">
+            id="search-form-input">
           <button type="button" class="btn btn-outline-light">Search</button>
           <button type="button" class="btn btn-outline-light" id="current-location-button"> <img src="media/map.png"
               alt="map.png" width="20"></button>
 
     </form>
-    <h1 id="city">London</h1>
-    <h2 id="current-temp">14°C</h2>
-    <h3 id="description">Mostly Cloudy</h3>
+    <h1 id="city"></h1>
+    <h2 id="temperature">°C</h2>
+    <h3 id="description"></h3>
     <br>
 
 
-    <p>Humidity: <span id="humidity"></span>%
+    <p>Humidity: <span id="humidity"></span>
     </p>
-    <p>Wind: <span id="wind"> </span>2 Km/H
+    <p>Wind: <span id="wind-speed"> </span>
     </p>
 
 
@@ -42,7 +42,7 @@
     <div class="container text-center">
       <div class="row align-items-start">
         <div class="col">Today</div>
-        <div class="col"><img src="media/sun.png" alt="sun.png" width="30"></div>
+        <div class="col" id="icon"></div>
         <div class="col" id="temp-max"><strong>19°C</strong></div>
         <div class="col" id="temp-min">9°C</div>
       </div>
