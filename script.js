@@ -40,7 +40,6 @@ function formatDay(timestamp) {
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
   return days[date.getDay()];
-
 }
 
 function getForecast(city) {
@@ -51,7 +50,7 @@ function getForecast(city) {
 }
 
 function displayForecast(response) {
-let forecastHtml = "";
+  let forecastHtml = "";
 
   response.data.daily.forEach(function (day, index) {
     if (index < 5) {
@@ -89,7 +88,7 @@ function refreshWeather(response) {
   let iconElement = document.querySelector("#icon");
 
   cityElement.innerHTML = response.data.city;
-  windspeedElement.innerHTML = `${response.data.wind.speed} km/h`;
+  windspeedElement.innerHTML = `${Math.round(response.data.wind.speed)} km/h`;
   humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
   descriptionElement.innerHTML = response.data.condition.description;
   temperatureElement.innerHTML = Math.round(temperature);
