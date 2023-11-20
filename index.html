@@ -10,7 +10,7 @@
   <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
   <title>Weather Application</title>
 </head>
-
+<main>
 <body>
 
   <div class="big-container">
@@ -19,7 +19,7 @@
         <div class="col">
           <input type="text" placeholder="Enter a city..." autocomplete="off" autofocus="on" class="search-field"
             id="search-form-input">
-          <button type="button" class="btn btn-outline-light">Search</button>
+          <button type="submit" class="btn btn-outline-light">Search</button>
           <button type="button" class="btn btn-outline-light" id="current-location-button"> <img src="media/map.png"
               alt="map.png" width="20"></button>
 
@@ -27,7 +27,8 @@
     <h1 id="city"></h1>
     <h2 id="temperature">°C</h2>
     <h3 id="description"></h3>
-    <br>
+    <img src="" id="icon" />
+    <br />
 
 
     <p>Humidity: <span id="humidity"></span>
@@ -40,14 +41,17 @@
     <h5></h5>
 
     <div class="container text-center" id="forecast">
-  </div>
+    </div>
 
-  
-  <script src="script.js"></script>
-  This project is
-  <a href="https://github.com/RebeicaGrigoras/WeatherApp" target="_blank">open-sourced on GitHub</a>
-  and
-  <a href="https://genuine-hotteok-812fee.netlify.app/" target="_blank">hosted on Netlify 👩🏻‍💻</a>
+</main>
+<footer>
+    This project is
+    <a href="https://github.com/RebeicaGrigoras/WeatherApp" target="_blank">open-sourced on GitHub</a>
+    and
+    <a href="https://genuine-hotteok-812fee.netlify.app/" target="_blank">hosted on Netlify 👩🏻‍💻</a>
+    </footer>
+    <script src="script.js"></script>
+
 </body>
 
 </html>
